@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.course,access_course,open_academy_app.model_course,base.group_user,1,1,1,1
+access.session,access_session,open_academy_app.model_session,base.group_user,1,1,1,1
+course_read_all,course all,open_academy_app.model_course,,1,0,0,0
+session_read_all,session all,open_academy_app.model_session,,1,0,0,0
+access.wizard,access_wizard,open_academy_app.model_wizard,base.group_user,1,1,1,1
+

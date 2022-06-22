@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="course_action" model="ir.actions.act_window">
+        <field name="name">courses</field>
+        <field name="res_model">course</field>
+        <field name="view_mode">tree,form</field>
+        <!-- select respo by default-->
+         <field name="context" eval="{'search_default_respons_courses': 1,'search_default_grp_by_responsible':1}"/>
+    </record>
+    <record id="course_view_tree" model="ir.ui.view">
+        <field name="name">course</field>
+        <field name="model">course</field>
+        <field name="arch" type="xml">
+            <tree string="courses tree">
+                <field name="title"/>
+                <field name="responsible_id"/>
+                <field name="description"/>
+
+            </tree>
+        </field>
+    </record>
+    <record id="course_view_search" model="ir.ui.view">
+        <field name="name">course.search</field>
+        <field name="model">course</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="title"/>
+                <field name="description"/>
+                <!-- the current user is the responsible-->
+                <filter name="respons_courses" string="My courses"
+                            domain="[('responsible_id', '=', uid)]"/>
+                   <!-- group by responsible-->
+                <group string="Group By">
+                        <filter name="grp_by_responsible" string="Responsible"
+                                context="{'group_by': 'responsible_id'}"/>
+                    </group>
+
+            </search>
+        </field>
+    </record>
+    <record id="course_view_form" model="ir.ui.view">
+        <field name="name">Course.form</field>
+        <field name="model">course</field>
+        <field name="arch" type="xml">
+            <form string="Courses">
+                <sheet>
+                    <group>
+                        <field name="title"/>
+                        <field name="responsible_id"/>
+
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <group>
+                                <field name="description" strting="description"/>
+                            </group>
+                        </page>
+                        <page string="Sessions">
+                            <field name="session_id">
+
+                                <tree string="Registered sessions">
+                                    <field name="name"/>
+                                    <field name="instructor_id"/>
+                                </tree>
+                            </field>
+
+                        </page>
+                    </notebook>
+
+
+                </sheet>
+            </form>
+        </field>
+
+    </record>
+</odoo>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="estate_property_action" model="ir.actions.act_window">
+        <field name="name">Properties</field>
+        <field name="res_model">estate.property</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="estate_property_view_tree" model="ir.ui.view">
+        <field name="name">Estate properties</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <tree string="Properties">
+                <field name="name"/>
+                <field name="property_type_id"/>
+
+                <field name="postcode"/>
+                <field name="state"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="expected_price"/>
+                <field name="selling_price"/>
+                <field name="date_availability"/>
+
+                <field name="facades"/>
+                <field name="buyer_id"/>
+                <field name="salesperson_id"/>
+                <field name="property_type_id"/>
+                <field name="total_area"/>
+            </tree>
+        </field>
+    </record>
+    <record id="estate_property_view_search" model="ir.ui.view">
+        <field name="name">Estate properties search</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="state" domain="['|',('state', '=','New'), ('state', '=','Offer Received')]"/>
+                <group expand="1" string="Group By">
+                    <filter name="postcode " context="{'group_by':'postcode'}"/>
+                </group>
+                <field name="name"/>
+                <field name="property_type_id"/>
+                <field name="postcode"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="expected_price"/>
+                <field name="selling_price"/>
+                <field name="date_availability"/>
+                <field name="facades"/>
+                <field name="buyer_id"/>
+                <field name="salesperson_id"/>
+
+            </search>
+        </field>
+    </record>
+    <record id="estate_property_view_form" model="ir.ui.view">
+        <field name="name">Estate properties</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <form string="Properties">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="postcode"/>
+                        </group>
+                        <group>
+                            <field name="property_type_id"/>
+                            <field name="expected_price"/>
+                        </group>
+                        <group>
+                            <field name="selling_price"/>
+
+                        </group>
+                        <group>
+                            <field name="date_availability"/>
+
+                        </group>
+
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <group>
+                                <field name="description" string="Desc"/>
+                                <field name="bedrooms" tring="Bedroom"/>
+
+                                <field name="facades"/>
+                                <field name="garage"/>
+                                <field name="living_area"/>
+                                <field name="total_area"/>
+                            </group>
+                        </page>
+                        <page string="More Info ">
+                            <field name="salesperson_id" string="salesman"/>
+                            <field name="buyer_id" string="Buyer"/>
+                            <field name="property_type_id"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+
+    </record>
+
+
+</odoo>
+

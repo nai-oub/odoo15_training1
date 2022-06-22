@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="open_menu_root" name="Open Academy">
+        <menuitem id="courses_menu" name="Courses">
+            <menuitem id="course_menu_action" action="course_action"/>
+        </menuitem>
+        <menuitem id="session_menu" name="Sessions">
+
+            <menuitem id="sessions_menu_action" action="session_action"
+            />
+        </menuitem>
+        <menuitem id="configuration_menu" name="Configuration">
+            <menuitem id="contact_menu" name="Contacts" action="contact_list_action"/>
+            <menuitem id="contact_cat_menu" name="Contact Tags" action="contact_cat_list_action"/>
+
+        </menuitem>
+        <menuitem id="base.menu_reporting_dashboard" name=" Dashboard">
+            <menuitem id="menu_board_session" name="Session Dashboard"
+                      action="open_board_session"
+                      sequence="4"/>
+        </menuitem>
+    </menuitem>
+
+
+</odoo>
+
